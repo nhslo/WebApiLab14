@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, username VARCHAR(100) UNIQUE NOT NULL, password_hash TEXT NOT NULL, role VARCHAR(20) NOT NULL CHECK(role IN ('user','admin')));
+CREATE TABLE IF NOT EXISTS tasks (id SERIAL PRIMARY KEY, title VARCHAR(150) NOT NULL, description TEXT NOT NULL, status VARCHAR(30) NOT NULL CHECK(status IN ('new','in_progress','completed')), user_id INTEGER NOT NULL REFERENCES users(id));
